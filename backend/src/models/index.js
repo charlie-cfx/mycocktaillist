@@ -29,66 +29,17 @@ pool.getConnection().catch(() => {
 
 const models = {};
 
-// TEAM
-
-const TeamManager = require("./TeamManager");
-
-models.team = new TeamManager();
-models.team.setDatabase(pool);
-
-// WORKSPACE
-const WorkspaceManager = require("./WorkspaceManager");
-
-models.workspace = new WorkspaceManager();
-models.workspace.setDatabase(pool);
-
 // USER
 const UserManager = require("./UserManager");
 
 models.user = new UserManager();
 models.user.setDatabase(pool);
 
-// IDEA
-const IdeaManager = require("./IdeaManager");
+// FAVORITE
+const FavoriteManager = require("./FavoriteManager");
 
-models.idea = new IdeaManager();
-models.idea.setDatabase(pool);
-
-// LIKE
-const LikeManager = require("./LikeManager");
-
-models.like = new LikeManager();
-models.like.setDatabase(pool);
-
-// COMMENT
-const CommentManager = require("./CommentManager");
-
-models.comment = new CommentManager();
-models.comment.setDatabase(pool);
-
-// IDEAS GROUP
-const IdeasGroupManager = require("./IdeasGroupManager");
-
-models.ideasgroup = new IdeasGroupManager();
-models.ideasgroup.setDatabase(pool);
-
-// CATEGORY
-const CategoryManager = require("./CategoryManager");
-
-models.category = new CategoryManager();
-models.category.setDatabase(pool);
-
-// COLOR
-const ColorManager = require("./ColorManager");
-
-models.color = new ColorManager();
-models.color.setDatabase(pool);
-
-// COMPANY
-const CompanyManager = require("./CompanyManager");
-
-models.company = new CompanyManager();
-models.company.setDatabase(pool);
+models.favorite = new FavoriteManager();
+models.favorite.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model

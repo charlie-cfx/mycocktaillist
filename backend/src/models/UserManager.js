@@ -6,32 +6,6 @@ class UserManager extends AbstractManager {
     super({ table: "user" });
   }
 
-  getUserByMailAndCompany(email, companyId) {
-    return this.database.query(
-      `SELECT
-      ${this.table}.*,
-      (
-        SELECT
-          GROUP_CONCAT(DISTINCT uhc.company_id)
-        FROM
-          user_has_company AS uhc
-        WHERE
-          ${this.table}.id = uhc.user_id
-      ) AS companies,
-      uhc.is_company_admin
-    FROM
-      user
-      LEFT JOIN user_has_company AS uhc ON ${this.table}.id = uhc.user_id
-    WHERE
-      ${this.table}.email = ?
-      AND (
-        uhc.company_id = ?
-        OR ${this.table}.is_salesforce_admin = 1
-      ); `,
-      [email, companyId]
-    );
-  }
-
   createUser(user) {
     const { email, hashed_password } = user;
     return this.database.query(
@@ -104,7 +78,7 @@ class UserManager extends AbstractManager {
 
   getUserByMail(email) {
     return this.database.query(
-      `SELECT ${this.table}.id, ${this.table}.firstname, ${this.table}.lastname, ${this.table}.email, ${this.table}.picture_url FROM ${this.table} WHERE ${this.table}.email = ?;`,
+      `SELECT ${this.table}.id, ${this.table}.firstname, ${this.table}.lastname, ${this.table}.email, ${this.table}.password, ${this.table}.picture_url FROM ${this.table} WHERE ${this.table}.email = ?;`,
       [email]
     );
   }

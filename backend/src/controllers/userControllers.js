@@ -3,10 +3,9 @@ const models = require("../models");
 
 const authenticationCheck = (req, res, next) => {
   const { email } = req.body;
-  const { company_id } = req.params;
 
   models.user
-    .getUserByMailAndCompany(email, company_id)
+    .getUserByMail(email)
     .then(([users]) => {
       if (users[0] != null) {
         [req.user] = users;
