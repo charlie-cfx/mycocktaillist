@@ -24,7 +24,7 @@
     @include text("sm");
   }
   .input {
-    padding-inline: 16px;
+    padding-inline: 8px;
     display: flex;
     flex-direction: row;
     justify-content: stretch;
@@ -32,9 +32,9 @@
     height: 40px;
     gap: 8px;
     background: var(--white);
-    border: 1px solid var(--grey-200);
+    border: 1px solid var(--grey-900);
     @include shadow("xs");
-    border-radius: 8px;
+    border-radius: 0px;
 
     &.disabled {
       background-color: var(--grey-100);

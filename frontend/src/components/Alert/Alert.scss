@@ -7,13 +7,11 @@
   display: flex;
   width: 100%;
   padding: 1rem;
-  border-radius: 12px;
   gap: 1rem;
   align-items: flex-start;
 
   .icon {
     padding: 0.62rem;
-    border-radius: 0.5rem;
     background-color: var(--white);
     @include shadow("xs");
     i {
@@ -54,7 +52,7 @@
   }
 
   &-error {
-    border: 1px solid var(--error-200);
+    border: 1px solid var(--error-700);
 
     .icon {
       @include icon("md", $color: "error", $style: "border", $shape: "square");
@@ -69,7 +67,7 @@
     }
   }
   &-info {
-    border: 1px solid var(--blue-200);
+    border: 1px solid var(--blue-700);
     .icon {
       @include icon("md", $color: "blue", $style: "border", $shape: "square");
     }
@@ -83,7 +81,7 @@
     }
   }
   &-success {
-    border: 1px solid var(--success-200);
+    border: 1px solid var(--success-700);
 
     .icon {
       @include icon(
@@ -103,7 +101,7 @@
     }
   }
   &-warning {
-    border: 1px solid var(--warning-200);
+    border: 1px solid var(--warning-700);
     .icon {
       @include icon(
         "md",

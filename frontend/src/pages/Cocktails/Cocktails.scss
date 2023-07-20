@@ -1,0 +1,39 @@
+@use "../../styles/shadows" as *;
+@use "../../styles/typography" as *;
+@use "../../styles/button" as *;
+
+.cocktails header {
+  background-color: var(--primary-50);
+  height: 150px;
+  display: grid;
+  place-items: center;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  border-bottom: 1px solid var(--grey-900);
+
+  h1 {
+    font-size: 3rem;
+    font-family: $accent-font;
+    color: var(--grey-900);
+    z-index: 1;
+    font-style: italic;
+  }
+  .filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--grey-900);
+    opacity: 0.2;
+  }
+}
+
+.cocktails-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+  gap: 2rem;
+  padding: 2rem;
+}

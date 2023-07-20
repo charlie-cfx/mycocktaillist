@@ -15,7 +15,7 @@ export default function Alert({
     isAlertVisible && (
       <div className={`alert alert-${type}`}>
         <div className="icon">
-          <i className={`fi fi-rr-${icon}`} />
+          <i className={`fi fi-rs-${icon}`} />
         </div>
         <div className="alert-content">
           <p className="title">{title}</p>

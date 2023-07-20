@@ -1,0 +1,81 @@
+@use "../../styles/typography" as *;
+
+.cocktail-card {
+  .cocktail-favorite {
+    border: none;
+    background-color: var(--primary-100);
+
+    line-height: unset;
+    cursor: pointer;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3rem;
+    width: 3rem;
+    border-radius: 0 0 50px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i:before {
+      line-height: unset;
+      font-size: 1.5rem;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .fi-rs-heart {
+      color: var(--grey-900);
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .fi-ss-heart {
+      color: var(--grey-900);
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .fi-ss-heart-crack {
+      color: var(--red-600);
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}
+.cocktail-details {
+  .cocktail-favorite {
+    border: none;
+    background-color: var(--primary-100);
+
+    line-height: unset;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i:before {
+      line-height: unset;
+      font-size: 2rem;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .fi-rs-heart {
+      color: var(--grey-900);
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .fi-ss-heart {
+      color: var(--grey-900);
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .fi-ss-heart-crack {
+      color: var(--red-600);
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}

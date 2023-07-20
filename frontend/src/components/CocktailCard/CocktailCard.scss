@@ -1,0 +1,44 @@
+@use "../../styles/typography" as *;
+.cocktail-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 3rem 1rem;
+  display: flex;
+  height: 100%;
+  gap: 1rem;
+
+  align-items: center;
+  border: 1px solid var(--grey-900);
+  border-radius: 500px 500px 0 0;
+  align-self: stretch;
+  a {
+    text-decoration: none;
+    color: var(--grey-900);
+    @include text("md");
+  }
+  .cocktail-image {
+    position: relative;
+    width: 100%;
+
+    img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 500px 500px 0 0;
+      z-index: 1;
+    }
+  }
+  h2 {
+    @include text("lg");
+    max-width: 100%;
+    text-align: center;
+    overflow: hidden;
+  }
+}
+@media screen and (min-width: 768px) {
+  .cocktail-card {
+    h2 {
+      @include text("md");
+    }
+  }
+}

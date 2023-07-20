@@ -8,6 +8,7 @@ export default AuthContext;
 
 export function AuthProvider({ children }) {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
+
   const [userInfos, setUserInfos] = useState({});
   const setUser = (token) => {
     if (token) {

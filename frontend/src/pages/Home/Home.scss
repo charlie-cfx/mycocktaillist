@@ -2,54 +2,87 @@
 @use "../../styles/typography" as *;
 @use "../../styles/button" as *;
 
-.page-actions {
-  border-top: 1px solid var(--grey-200);
-  margin-top: 1rem;
-  padding: 2rem 0;
-  display: flex;
+.home header {
+  background-color: var(--primary-200);
+  height: 50vh;
+  height: 50dvh;
 
+  display: flex;
   flex-direction: column;
-  justify-content: stretch;
-  align-items: stretch;
-}
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 
-.idea-cards-list {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  & > * {
-    flex-basis: 100%;
+  background-image: url("https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  border-bottom: 1px solid var(--grey-900);
+
+  h1 {
+    font-size: 5rem;
+    font-family: $accent-font;
+    color: var(--white);
+    font-weight: 500;
+    z-index: 1;
+    font-style: italic;
+  }
+  .subtitle {
+    @include title("xs");
+    z-index: 1;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+  .filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--grey-900);
+    opacity: 0.2;
   }
 }
 
-.teams-card-container {
+.cocktails-types-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  width: 100%;
-  & > * {
-    flex-basis: 100%;
+  margin-bottom: -1px;
+  margin-right: -1px;
+
+  a.cocktail-type {
+    padding: 1rem;
+    display: flex;
+    flex-grow: 1;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+    @include title("md", $weight: 700);
+    letter-spacing: 0.15rem;
+    word-spacing: -0.5rem;
+    text-transform: uppercase;
+    border-right: 1px solid var(--grey-900);
+    border-bottom: 1px solid var(--grey-900);
+    color: var(--grey-900);
   }
 }
 
 @media screen and (min-width: 768px) {
-  .idea-cards-list {
-    & > * {
-      flex-basis: calc(100% / 3 - (24px / 3) * 2);
-    }
-  }
-  .page-actions {
-    flex-direction: row;
-    justify-content: flex-end;
-    .input-search-bar {
-      max-width: 300px;
+  .home header {
+    h1 {
+      font-size: 7rem;
     }
   }
 
-  .teams-card-container {
-    & > * {
-      flex-basis: calc(100% / 3 - (24px / 3) * 2);
+  .cocktails-types-list {
+    a.cocktail-type {
+      -webkit-text-stroke: 1.25px var(--grey-900);
+      -webkit-text-fill-color: transparent;
+      &:hover {
+        -webkit-text-fill-color: var(--grey-900);
+      }
     }
   }
 }
