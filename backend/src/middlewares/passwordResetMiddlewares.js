@@ -4,7 +4,7 @@ const models = require("../models");
 require("dotenv").config();
 
 const passwordResetVerifyUserExists = (req, res, next) => {
-  const { email, primary600, grey50, company_slug } = req.body;
+  const { email, primary600, grey50 } = req.body;
   models.user.getUserByMail(email).then(([rows]) => {
     const rowsLength = rows.length;
     if (rowsLength > 0) {
@@ -13,14 +13,12 @@ const passwordResetVerifyUserExists = (req, res, next) => {
         email,
         primary600,
         grey50,
-        company_slug,
         user_firstname: rows[0].firstname,
         user_id: rows[0].id,
       };
       delete req.body.email;
       delete req.body.primary600;
       delete req.body.grey50;
-      delete req.body.company_slug;
       next();
     } else {
       res.status(404).send("User not found");
@@ -55,18 +53,12 @@ const passwordResetUpdateUserProfile = (req, res, next) => {
 };
 
 const sendResetPasswordMail = (req, res) => {
-  const {
-    email,
-    newTempPassword,
-    grey50,
-    primary600,
-    company_slug,
-    user_firstname,
-  } = req.emailInfos;
+  const { email, newTempPassword, grey50, primary600, user_firstname } =
+    req.emailInfos;
 
-  const emailSender = "IdeasForce <ne-pas-repondre@ideasforce.fr>";
+  const emailSender = "MyCocktailsList <ne-pas-repondre@my-coocktails-list.fr>";
 
-  const passwordResetLink = `${process.env.FRONTEND_URL}/${company_slug}/new-password?email=${email}&temporary_code=${newTempPassword}`;
+  const passwordResetLink = `${process.env.FRONTEND_URL}/new-password?email=${email}&temporary_code=${newTempPassword}`;
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_BREVO,
@@ -90,7 +82,7 @@ const sendResetPasswordMail = (req, res) => {
     ${passwordResetLink}\n\n
     
     Bonne journée,\n\n
-    L'Équipe d'IdeasForce`,
+    L'Équipe MyCocktailsList`,
     html: `
     <head>
         <style>
@@ -108,13 +100,13 @@ const sendResetPasswordMail = (req, res) => {
     <body>
         <span class="preheader" style="display: none !important; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;">Réinitialisez votre mot de passe IdeasForce</span>
         <div style="font-family:Verdana; font-size: 18px ;">
-            <div style="background-color: ${grey50}; padding: 20px; border-radius: 12px;">
+            <div style="background-color: ${grey50}; padding: 20px;">
                 <p>Bonjour${user_firstname ? ` ${user_firstname}` : ""},</p>
                 <p> Vous avez demandé à réinitialiser votre mot de passe. Cliquez sur le lien suivant pour le mettre à jour.</p>
     
-                <a style="background-color: ${primary600}; border-radius: 8px; text-decoration: none; padding: 10px 18px; text-align: center; color:#fff;" href="${passwordResetLink}">Je réinitialise mon mot de passe</a></br>
+                <a style="background-color: ${primary600}; text-decoration: none; padding: 10px 18px; text-align: center; color:#fff;" href="${passwordResetLink}">Je réinitialise mon mot de passe</a></br>
                 <p>Bonne journée,</p>
-                <p>L'Équipe d'IdeasForce</p>
+                <p>L'Équipe MyCocktailsList</p>
             </div>
         </div>
     </body>

@@ -44,8 +44,23 @@ const getCocktailById = (req, res) => {
     });
 };
 
+const getCocktailByName = (req, res) => {
+  const { name } = req.params;
+
+  axios
+    .get(`${API_URL}search.php?s=${name}`)
+    .then((response) => {
+      res.send(response.data.drinks);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   getCocktailsTypes,
   getCocktailsByCategory,
   getCocktailById,
+  getCocktailByName,
 };

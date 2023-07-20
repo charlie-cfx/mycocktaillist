@@ -95,6 +95,8 @@ router.get(
 
 router.get("/cocktails/:id", cocktailControllers.getCocktailById);
 
+router.get("/cocktails/search/:name", cocktailControllers.getCocktailByName);
+
 const favoriteControllers = require("./controllers/favoriteControllers");
 
 router.post(
